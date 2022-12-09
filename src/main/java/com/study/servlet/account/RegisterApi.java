@@ -37,6 +37,7 @@ public class RegisterApi extends HttpServlet {
 				.password(registerParams.get("password"))
 				.name(registerParams.get("name"))
 				.email(registerParams.get("email"))
+				.roles("ROLE_USER, ROLE_ADMIN")
 				.build();
 		accountService.register(user);
 //		사용자 조회
