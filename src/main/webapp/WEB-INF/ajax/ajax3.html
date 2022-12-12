@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<input type="text" class="phone1">
+	<input type="text" class="phone2">
+	<input type="text" class="phone3">
+	<button type="button" class="submit-button">전송</button>
+	
+	<script type="text/javascript">
+		const subBtn = document.querySelector(".submit-button");
+		
+		subBtn.onclick = () => {
+			const phone1 = document.querySelector(".phone1");
+			const phone2 = document.querySelector(".phone2");
+			const phone3 = document.querySelector(".phone3");
+			
+			let phoneNumber = {
+				phone1: document.querySelector(".phone1").value,
+				phone2: document.querySelector(".phone2").value,
+				phone3: document.querySelector(".phone3").value
+			}
+			// JSON.stringify();		객체(Object) -> JSON
+			// JSON.parse();			JSON -> 객체(Object)
+			
+			let responseData = {
+					aysnc: false,
+					type: "post",
+					url: "/api/ajax3",
+					data : {
+						jsonData: JSON.stringify(phoneNumber)
+						},
+					dataType: "json",
+					success: response => {
+						alert("요청성공")
+						console.log(response)
+					},
+					error: response =>{
+						alert("요청실패")
+					}
+					
+			}
+			
+			$.ajax(responseData);
+			
+}
+	</script>
+</body>
+</html>
